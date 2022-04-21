@@ -21,13 +21,7 @@ spec:
   storageClassName: ""
   {{- end }}
   accessModes:
-  {{- if not (empty .Values.persistence.accessModes) }}
-  {{- range .Values.persistence.accessModes }}
-    - {{ . | quote }}
-  {{- end }}
-  {{- else }}
-    - {{ .Values.persistence.accessMode | quote }}
-  {{- end }}
+  - {{ .Values.persistence.accessModes | quote }}
   resources:
     requests:
       storage: {{ .Values.persistence.size | quote }}
